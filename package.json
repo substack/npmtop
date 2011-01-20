@@ -1,10 +1,10 @@
 {
     "name" : "npmtop",
-    "version" : "0.0.2",
+    "version" : "0.0.3",
     "description" : "Silly program that ranks npm contributors by number of packages",
     "repository" : {
         "type" : "git",
-        "url" : "http://github.com/substack/npm-top.git"
+        "url" : "http://github.com/substack/npmtop.git"
     },
     "bin" : {
         "npmtop" : "./top.js"
