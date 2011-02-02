@@ -1,9 +1,10 @@
 var npm = require('npm');
 var Hash = require('traverse/hash');
 var sprintf = require('sprintf').sprintf;
+var argv = require('optimist').argv;
 
 npm.load({ outfd : null }, function () {
-    npm.commands.list(['latest'], function (err, pkgs) {
+    npm.commands.list(argv.publishes ? [] : ['latest'], function (err, pkgs) {
         var authors = {};
         var total = Hash(pkgs).length;
         Hash(pkgs).forEach(function (pkg) {
@@ -20,11 +21,11 @@ npm.load({ outfd : null }, function () {
             })
         ;
         
-        var limit = process.argv[2] || 15;
+        var limit = argv._[0] || 15;
         var start = 0;
         
         if (!limit.toString().match(/^\d+$/)) {
-            var who = process.argv[2];
+            var who = argv._[0];
             start = sorted.indexOf(who);
             limit = 1;
         }
