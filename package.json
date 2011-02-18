@@ -1,6 +1,6 @@
 {
     "name" : "npmtop",
-    "version" : "0.0.4",
+    "version" : "0.0.5",
     "description" : "Silly program that ranks npm contributors by number of packages",
     "repository" : {
         "type" : "git",
@@ -10,7 +10,7 @@
         "npmtop" : "./top.js"
     },
     "dependencies" : {
-        "traverse" : ">=0.2.3",
+        "hashish" : ">=0.0.2",
         "sprintf" : ">=0.1.1",
         "npm" : ">=0.2.14"
     },

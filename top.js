@@ -1,5 +1,5 @@
 var npm = require('npm');
-var Hash = require('traverse/hash');
+var Hash = require('hashish');
 var sprintf = require('sprintf').sprintf;
 var argv = require('optimist').argv;
 
