@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 var npm = require('npm');
 var Hash = require('hashish');
 var sprintf = require('sprintf').sprintf;
