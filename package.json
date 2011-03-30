@@ -12,7 +12,8 @@
     "dependencies" : {
         "hashish" : ">=0.0.2",
         "sprintf" : ">=0.1.1",
-        "npm" : ">=0.2.14"
+        "npm" : ">=0.2.14",
+        "optimist": ">=0.1.0"
     },
     "keywords" : [
         "hall of fame",
