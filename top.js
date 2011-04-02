@@ -10,8 +10,14 @@ npm.load({ outfd : null }, function () {
         var authors = {};
         var total = Hash(pkgs).length;
         Hash(pkgs).forEach(function (pkg) {
-            var user = pkg.words[0].slice(1);
-            authors[user] = (authors[user] || 0) + 1;
+            var users = pkg.words
+                .filter(function (w) { return w[0].match(/^=/) })
+                .map(function (w) { return w.slice(1) })
+            ;
+            
+            users.forEach(function (u) {
+                authors[u] = (authors[u] || 0) + (1 / users.length);
+            });
         });
         
         console.log('rank   percent   packages   author');
@@ -38,13 +44,16 @@ npm.load({ outfd : null }, function () {
             .slice(start, start + limit)
             .forEach(function (name, rank) {
                 var percent = (authors[name] / total) * 100;
-
+                
                 if(authors[name] == lastVal)
                   rank = fairRank;
-
+                
+                var c = authors[name];
                 console.log(sprintf(
-                    '# %2d    %.2f %%    %4d      %s',
-                   rank + start + 1 , percent, authors[name], name
+                    '%4d    %.2f %%   %4d.%02f    %s',
+                   rank + start + 1 , percent,
+                   c, Math.floor((c - Math.floor(c)) * 100),
+                   name
                 ));
 
                lastVal = authors[name];
