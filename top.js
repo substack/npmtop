@@ -6,12 +6,11 @@ var sprintf = require('sprintf').sprintf;
 var argv = require('optimist').argv;
 
 npm.load({ outfd : null }, function () {
-    npm.commands.list(argv.publishes ? [] : ['latest'], function (err, pkgs) {
+    npm.commands.search([], function (err, pkgs) {
         var authors = {};
         var total = Hash(pkgs).length;
         Hash(pkgs).forEach(function (pkg) {
-            var users = pkg.words
-                .filter(function (w) { return w[0].match(/^=/) })
+            var users = pkg.maintainers
                 .map(function (w) { return w.slice(1) })
             ;
             
