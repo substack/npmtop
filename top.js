@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 var npm = require('npm');
 var Hash = require('hashish');
 var sprintf = require('sprintf').sprintf;
@@ -7,36 +5,45 @@ var argv = require('optimist').argv;
 
 var npmjs = require('./npmjs');
  
-npm.load({ outfd : null }, function () {
-    npm.commands.search([], function (err, pkgs) {
-        var authors = {};
-        var total = Hash(pkgs).length;
-        
-        if (argv.maintainers) {
-            Hash(pkgs).forEach(function (pkg) {
-                var users = pkg.maintainers
-                    .map(function (w) { return w.slice(1) })
-                ;
-                
-                users.forEach(function (u) {
-                    authors[u] = (authors[u] || 0) + (1 / users.length);
-                });
-            });
-            
-            render(authors, total);
-        }
-        else {
-            npmjs.list(function (authors) {
-                render(authors, total);
-            });
-        }
-        
-    });
-});
+ 
+exports.crunch = function(callback){
+  
+  npm.load({ outfd : null }, function () {
+      npm.commands.search([], function (err, pkgs) {
+          var authors = {};
+          var total = Hash(pkgs).length;
+
+          if (argv.maintainers) {
+              Hash(pkgs).forEach(function (pkg) {
+                  var users = pkg.maintainers
+                      .map(function (w) { return w.slice(1) })
+                  ;
+
+                  users.forEach(function (u) {
+                      authors[u] = (authors[u] || 0) + (1 / users.length);
+                  });
+              });
+
+              callback(render(authors, total));
+          }
+          else {
+              npmjs.list(function (authors) {
+                  callback(render(authors, total));
+              });
+          }
+
+      });
+  });  
+  
+}
+ 
+
 
 function render (authors, total) {
-    console.log('rank   percent   packages   author');
-    console.log('----   -------   --------   ------');
+  
+    var str = '';
+    str += ('rank   percent   packages   author \n');
+    str += ('----   -------   --------   ------ \n');
     
     var sorted = Object.keys(authors)
         .sort(function (a,b) {
@@ -46,7 +53,7 @@ function render (authors, total) {
         })
     ;
     
-    var limit = argv._[0] || 15;
+    var limit = argv._[0] || 100;
     var start = 0;
     
     if (!limit.toString().match(/^\d+$/)) {
@@ -66,15 +73,17 @@ function render (authors, total) {
               rank = fairRank;
             
             var c = authors[name];
-            console.log(sprintf(
+            str += sprintf(
                 '%4d    %.2f %%   %4d.%02f    %s',
                rank + start + 1 , percent,
                c, Math.floor((c - Math.floor(c)) * 100),
                name
-            ));
+            ) + '\n';
 
            lastVal = authors[name];
            fairRank = rank;
         })
     ;
+
+    return str;
 }

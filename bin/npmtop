@@ -1,0 +1,7 @@
+#!/usr/bin/env node
+
+var top = require('../top');
+
+top.crunch(function(results){
+  console.log(results);
+});
