@@ -7,7 +7,7 @@
         "url" : "http://github.com/substack/npmtop.git"
     },
     "bin" : {
-        "npmtop" : "./top.js"
+        "npmtop" : "./bin/npmtop"
     },
     "dependencies" : {
         "hashish" : ">=0.0.2",
