@@ -1,0 +1,37 @@
+#!/usr/bin/env node
+
+var top = require('../lib/npmtop');
+var http = require('http');
+
+//
+// Default message we output while waiting for the first set of results to come back
+//
+var topResults = 'generating results...keep refreshing page...';
+
+//
+// Create a super-simple http server for serving the results
+//
+http.createServer(function (req, res) {
+  res.writeHead(200, {'Content-Type': 'text/plain'});
+  res.write(topResults);
+  res.end();
+}).listen(8000);
+
+console.log('> http server has started on port 8000');
+
+//
+// Crunch the results once to start
+//
+top.crunch(function(results){
+  topResults = results;
+});
+
+//
+// Now recrunch thr results every 60 minutes
+//
+setInterval(function(){
+  top.crunch(function(results){
+    topResults = results;
+  });
+}, 60000);
+
