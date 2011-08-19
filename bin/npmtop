@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-var top = require('../npmtop');
+var top = require('../lib/npmtop');
 
 top.crunch(function(results){
   console.log(results);
