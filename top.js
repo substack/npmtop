@@ -8,6 +8,7 @@ var argv = require('optimist').argv;
 var npmjs = require('./npmjs');
  
 npm.load({ outfd : null }, function () {
+    npm.config.set('outfd', null);
     npm.commands.search([], function (err, pkgs) {
         var authors = {};
         var total = Hash(pkgs).length;
