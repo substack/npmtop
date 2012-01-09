@@ -1,6 +1,6 @@
 {
     "name" : "npmtop",
-    "version" : "0.1.1",
+    "version" : "0.1.2",
     "description" : "Silly program that ranks npm contributors by number of packages",
     "repository" : {
         "type" : "git",
