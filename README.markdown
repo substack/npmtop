@@ -27,3 +27,25 @@ As of 2011-01-20:
 Thanks Hackers... Thackers.
 
 ![npmtop!](http://substack.net/images/npmtop.png)
+
+usage
+=====
+
+```
+npmtop [username]
+
+  Show rank for [username].
+
+npmtop [rank]
+
+  Show entries starting at [rank].
+```
+
+install
+=======
+
+With [npm](http://npmjs.org) do:
+
+```
+npm install -g npmtop
+```
