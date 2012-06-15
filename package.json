@@ -1,26 +1,22 @@
 {
     "name" : "npmtop",
-    "version" : "0.1.2",
-    "description" : "Silly program that ranks npm contributors by number of packages",
+    "version" : "0.2.0",
+    "description" : "silly program that ranks npm contributors by number of packages",
     "repository" : {
         "type" : "git",
         "url" : "http://github.com/substack/npmtop.git"
     },
+    "main" : "index.js",
     "bin" : {
-        "npmtop" : "./top.js"
+        "npmtop" : "bin/cmd.js"
     },
     "dependencies" : {
-        "hashish" : ">=0.0.2",
-        "sprintf" : ">=0.1.1",
-        "npm" : "1.0.106",
-        "optimist": ">=0.1.0"
+        "request" : "~2.9.202"
     },
     "keywords" : [
-        "hall of fame",
-        "awesome people",
-        "pissing contest",
+        "npm",
         "contributors",
-        "npm"
+        "modules"
     ],
     "author" : {
         "name" : "James Halliday",
@@ -28,5 +24,5 @@
         "url" : "http://substack.net"
     },
     "license" : "MIT/X11",
-    "engine" : ["node >=0.2.0"]
+    "engine" : { "node" : ">=0.6.0" }
 }
