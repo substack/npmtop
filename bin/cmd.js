@@ -26,7 +26,16 @@ npmtop(function (err, all) {
     console.log('rank   percent   packages   author');
     console.log('----   -------   --------   ------');
     
-    var rows = all.slice(start, start + limit);
+    var rows;
+    if (who) {
+        rows = all.filter(function (row) {
+            return row.author === who;
+        });
+    }
+    else {
+        rows = all.slice(start, start + limit);
+    }
+    
     rows.forEach(function (row, ix) {
         var rank = start + ix + 1;
         console.log(sprintf(
