@@ -33,9 +33,8 @@ function getScores (cb) {
     request({ uri : uri}, function (err, res, body) {
         if (err) return cb(err)
         if (body.error) return cb(body.error)
-        var row = JSON.parse(body).rows
 
-        var scores = row.reduce(function (acc, row) {
+        var scores = JSON.parse(body).rows.reduce(function (acc, row) {
             acc[row.key] = row.value;
             return acc;
         }, {});
