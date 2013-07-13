@@ -1,6 +1,6 @@
 var request = require('request');
-var uri = 'https://isaacs.iriscouch.com/registry/'
-    + '_design/app/_view/npmTop?group_level=1';
+var uri = 'http://isaacs.couchone.com/registry/_design/app/_view/npmTop?group_level=1';
+
 
 module.exports = function (cb) {
     getScores(function (err, scores) {
@@ -30,11 +30,12 @@ module.exports = function (cb) {
 };
 
 function getScores (cb) {
-    request({ uri : uri, json : true }, function (err, res, body) {
+    request({ uri : uri}, function (err, res, body) {
         if (err) return cb(err)
         if (body.error) return cb(body.error)
-        
-        var scores = body.rows.reduce(function (acc, row) {
+        var row = JSON.parse(body).rows
+
+        var scores = row.reduce(function (acc, row) {
             acc[row.key] = row.value;
             return acc;
         }, {});
