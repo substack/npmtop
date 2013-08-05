@@ -1,27 +1,33 @@
 npmtop
 ======
 
+[![build
+status](https://secure.travis-ci.org/nickleefly/npmrank.png)](http://travis-ci.org/nickleefly/npmrank)
+
 Rank npm contributors by the number of packages they've published.
 
-As of 2011-01-20:
+As of 2013-07-20 :
 
     rank   percent   packages   author
     ----   -------   --------   ------
-    #  1    3.04 %      28      tjholowaychuk
-    #  2    2.82 %      26      samuraijack
-    #  3    2.28 %      21      gozala
-    #  4    1.95 %      18      creationix
-    #  5    1.85 %      17      isaacs
-    #  6    1.74 %      16      substack
-    #  7    1.63 %      15      kriskowal
-    #  8    1.52 %      14      marak
-    #  9    1.41 %      13      coolaj86
-    #  9    1.41 %      13      pkrumins
-    # 11    1.19 %      11      masylum
-    # 12    1.09 %      10      TooTallNate
-    # 13    0.98 %       9      cloudhead
-    # 13    0.98 %       9      davglass
-    # 13    0.98 %       9      indexzero
+    #  1    0.88 %      333     tjholowaychuk
+    #  2    0.73 %      276     substack
+    #  3    0.69 %      261     dominictarr
+    #  4    0.66 %      249     raynos
+    #  5    0.55 %      209     clewfirst
+    #  6    0.51 %      192     mikolalysenko
+    #  7    0.39 %      147     architectd
+    #  8    0.37 %      139     viatropos
+    #  9    0.36 %      136     forbeslindesay
+    # 10    0.32 %      122     chrisdickinson
+    # 11    0.32 %      122     jaredhanson
+    # 12    0.32 %      121     coolaj86
+    # 13    0.30 %      112     damonoehlman
+    # 14    0.30 %      112     juliangruber
+    # 15    0.29 %      110     marak
+
+    rank   percent   packages   author
+----   -------   --------   ------
 
 
 Thanks Hackers... Thackers.

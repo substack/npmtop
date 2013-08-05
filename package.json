@@ -11,8 +11,8 @@
         "npmtop" : "bin/cmd.js"
     },
     "dependencies" : {
-        "request" : "~2.9.202",
-        "optimist" : "~0.3.4",
+        "request" : "~2.22.0",
+        "optimist" : "~0.6.0",
         "sprintf" : "~0.1.1"
     },
     "keywords" : [
