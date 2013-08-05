@@ -1,5 +1,6 @@
 var request = require('request');
-var uri = 'http://isaacs.couchone.com/registry/_design/app/_view/npmTop?group_level=1';
+var uri = 'http://isaacs.iriscouch.com/registry/'
+    + '_design/app/_view/npmTop?group_level=1';
 
 
 module.exports = function (cb) {
